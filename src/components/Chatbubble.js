@@ -14,12 +14,7 @@ function ChatBubble() {
   return (
     <div className="max-w-sm p-6 bg-black border border-gray-200  shadow dark:bg-gray-800 dark:border-gray-700  w-full sm:w-[375px] rounded-xl absolute sm:right-6 md:bottom-20 bottom-0  py-6 px-5">
       <div className="flex justify-between items-center pb-4">
-        <image
-          src="../../public/xxxhdpi.png"
-          alt="logo"
-          width={24}
-          height={24}
-        />
+        <img src="../../public/xxxhdpi.png" alt="logo" width="24" height="24" />
         <div className="flex justify-between gap-5">
           <MoreHorizontal className="h-4 w-4 cursor-pointer" />
           <button
