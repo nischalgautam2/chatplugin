@@ -4,9 +4,8 @@ import axios from "axios";
 import { X, MessageSquare, ArrowRight } from "lucide-react";
 function ChatBubble() {
   const [text, setText] = useState("");
-  const [result, setResult] = useState(
-    " lorem dfdjf jdakfjdsjflkjdsa jlfj dsjkfjlkdflk lklkdf lkdsflk jdslkflka sdlkfjlad flkfjdl afj ladjl s"
-  );
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState();
   const [openModal, setOpenModal] = useState(true);
   if (!openModal)
     return (
@@ -19,6 +18,7 @@ function ChatBubble() {
     );
   const handleSubmit = async () => {
     try {
+      setLoading(true);
       // const response = await fetch("https://search.veez.io/", {
       //   method: "POST",
       //   headers: {
@@ -43,6 +43,7 @@ function ChatBubble() {
       const result = response.data.response.text;
       console.log(result);
       setResult(result);
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -78,12 +79,23 @@ function ChatBubble() {
             onClick={() => handleSubmit()}
             className=" px-2 py-1 absolute top-1/2 bottom-1/2 h-full transform -translate-y-1/2 right-0 rounded bg-blue-500 text-white"
           >
-            Ask <ArrowRight className="h-4 w-4 inline" />
+            {loading ? (
+              <p className="animate-pulse">...</p>
+            ) : (
+              <div>
+                Ask <ArrowRight className="h-4 w-4 inline" />
+              </div>
+            )}
           </button>
         </div>
         {result && (
           <div className="my-4 rounded-xl border bg-white p-4 shadow-md transition hover:bg-gray-100">
             {result}
+          </div>
+        )}
+        {loading && (
+          <div className="my-4 rounded-xl border bg-white p-4 shadow-md transition hover:bg-gray-100">
+            <h1 className=" text-center animate-pulse">...</h1>
           </div>
         )}
         <p className=" text-[10px] tracking-wider  font-normal text- text-left">
