@@ -6,7 +6,7 @@ function ChatBubble() {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState();
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   if (!openModal)
     return (
       <div
@@ -69,7 +69,7 @@ function ChatBubble() {
             </button>
           </div>
         </div>
-        <div className=" relative ">
+        <div className=" relative  mb-2 ">
           <input
             onChange={(e) => setText(e.target.value)}
             placeholder="Ask me a question about veez..."
@@ -80,7 +80,7 @@ function ChatBubble() {
             className=" px-2 py-1 absolute top-1/2 bottom-1/2 h-full transform -translate-y-1/2 right-0 rounded bg-blue-500 text-white"
           >
             {loading ? (
-              <p className="animate-pulse">...</p>
+              <div className="animate-pulse px-1">...</div>
             ) : (
               <div>
                 Ask <ArrowRight className="h-4 w-4 inline" />
@@ -95,7 +95,9 @@ function ChatBubble() {
         )}
         {loading && (
           <div className="my-4 rounded-xl border bg-white p-4 shadow-md transition hover:bg-gray-100">
-            <h1 className=" text-center animate-pulse">...</h1>
+            <h1 className=" text-center animate-pulse font-bold text-2xl">
+              ...
+            </h1>
           </div>
         )}
         <p className=" text-[10px] tracking-wider  font-normal text- text-left">
