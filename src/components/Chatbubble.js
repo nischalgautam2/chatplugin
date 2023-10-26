@@ -1,10 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 //take input company logo image ,base color and company name, and what you want to display in message bubble
-import { X, MessageSquare } from "lucide-react";
+import { X, MessageSquare, ArrowRight } from "lucide-react";
 function ChatBubble() {
   const [text, setText] = useState("");
-  const [result, setResult] = useState("");
+  const [result, setResult] = useState(
+    " lorem dfdjf jdakfjdsjflkjdsa jlfj dsjkfjlkdflk lklkdf lkdsflk jdslkflka sdlkfjlad flkfjdl afj ladjl s"
+  );
   const [openModal, setOpenModal] = useState(true);
   if (!openModal)
     return (
@@ -29,7 +31,7 @@ function ChatBubble() {
       //     text: text,
       //   }),
       // });
-      const response = await axios.post("http://localhost:3000/api/search", {
+      const response = await axios.post("https://search.veez.io/api/search", {
         headers: {
           "Cache-Control": "no-cache",
           "Content-Type": "application/json",
@@ -61,23 +63,28 @@ function ChatBubble() {
               className="cursor-pointer"
               onClick={() => setOpenModal(false)}
             >
-              <X className="h-4 w-4 cursor-pointer" />
+              <X className="h-4 w-4 cursor-pointer hover:bg-slate-100  rounded-md" />
             </button>
           </div>
         </div>
-        <div className=" pb-6  flex">
+        <div className=" relative ">
           <input
             onChange={(e) => setText(e.target.value)}
             placeholder="Ask me a question about veez..."
-            className="w-full bg-white rounded h-10 py-4 border-slate-300 focus:border-slate-700 px-2 border"
+            className="w-full bg-white rounded h-10 py-4   border-slate-300 focus:border-slate-700 px-2 border"
           />
           <button
             onClick={() => handleSubmit()}
-            className="ml-[-26px] px-2 py-1 rounded bg-blue-500 text-white"
+            className=" px-2 py-1 absolute top-1/2 bottom-1/2 h-full transform -translate-y-1/2 right-0 rounded bg-blue-500 text-white"
           >
-            Ask
+            Ask <ArrowRight className="h-4 w-4 inline" />
           </button>
         </div>
+        {result && (
+          <div className="my-4 rounded-xl border bg-white p-4 shadow-md transition hover:bg-gray-100">
+            {result}
+          </div>
+        )}
         <p className=" text-[10px] tracking-wider  font-normal text- text-left">
           Powered by{" "}
           <a
