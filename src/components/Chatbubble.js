@@ -37,9 +37,9 @@ function ChatBubble() {
         },
         text: text,
       });
-      const result = response.json();
-      console.log(await result);
-      // setResult(result);
+      const result = response.data.text;
+      console.log(result);
+      setResult(result);
     } catch (err) {
       console.log(err);
     }
@@ -50,7 +50,7 @@ function ChatBubble() {
         onClick={() => setOpenModal(false)}
         className="h-screen overlay top-0 fixed w-full bg-black opacity-20"
       ></div>
-      <div className="  md:w-[650px] p-6 fixed bg-white text-black border border-gray-200   left-1/2 right-1/2 transform -translate-x-1/2   dark:border-gray-700  w-full sm:w-[375px] rounded-xl  sm:right-6  top-16  py-6 px-5">
+      <div className="  z-50  md:w-[650px] p-6 fixed bg-white text-black border border-gray-200   left-1/2 right-1/2 transform -translate-x-1/2   dark:border-gray-700  w-full sm:w-[375px] rounded-xl  sm:right-6  top-16  py-6 px-5">
         <div className="flex justify-between items-center pb-4">
           <div className="flex gap-5 items-center text-2xl py-3">
             <h1 className="font-bold">Logo</h1>
