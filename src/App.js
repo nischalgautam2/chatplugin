@@ -2,7 +2,7 @@ import ChatBubble from "./components/Chatbubble";
 
 function App() {
   return (
-    <div className="">
+    <div className="h-[300vh]">
       <ChatBubble />
     </div>
   );
