@@ -31,7 +31,7 @@ function ChatBubble() {
       //     text: text,
       //   }),
       // });
-      const response = await axios.post("https://search.veez.io/api/search", {
+      const response = await axios.post("http://localhost:3000/api/search", {
         headers: {
           "Cache-Control": "no-cache",
           "Content-Type": "application/json",
