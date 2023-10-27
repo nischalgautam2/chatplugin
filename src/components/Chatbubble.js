@@ -31,7 +31,7 @@ function ChatBubble() {
       //     text: text,
       //   }),
       // });
-      const response = await axios.post("http://localhost:3000/api/search", {
+      const response = await axios.post("https://search.veez.io/api/search", {
         headers: {
           "Cache-Control": "no-cache",
           "Content-Type": "application/json",
@@ -63,7 +63,12 @@ function ChatBubble() {
           <div className="flex justify-between gap-5">
             <button
               className="cursor-pointer"
-              onClick={() => setOpenModal(false)}
+              onClick={() => {
+                setOpenModal(false);
+                setLoading(false);
+                setText("");
+                setResult(undefined);
+              }}
             >
               <X className="h-4 w-4 cursor-pointer hover:bg-slate-100  rounded-md" />
             </button>
