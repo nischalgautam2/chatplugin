@@ -31,7 +31,7 @@ function ChatBubble() {
       //     text: text,
       //   }),
       // });
-      const response = await axios.post("api/search", {
+      const response = await axios.post("/api/search", {
         headers: {
           "Cache-Control": "no-cache",
           "Content-Type": "application/json",
